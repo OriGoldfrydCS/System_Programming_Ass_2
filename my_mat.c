@@ -113,13 +113,13 @@ int knapSack(int weights[], int values[], int selected_bool[]) {
             continue;                           // This product is not included (Identical for selected_bool[p-1] = FALSE) 
         else 
         {
-            selected_bool[p-1] = TRUE;          // This product is included
-            result = result - values[p-1];      // Uptate value
+            selected_bool[p-1] = TRUE;          // The product is included
+            result = result - values[p-1];      // Uptate the value
             w = w - weights[p-1];               // Update the weight lefts
         }
     }
 
-    return DP[N][MAX_CAP]; // Return the maximum value
+    return DP[N][MAX_CAP]; 
 }
 
 /*This function finds the maximum of two integers*/ 

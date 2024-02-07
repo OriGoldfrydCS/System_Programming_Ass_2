@@ -34,7 +34,7 @@ int main()
                 shortestPath(matrix, i, j);
                 break;
             default:                          // Default case: if the user type none of the valid options
-                printf("Invalid action. Please choose A, B, C or D\n");
+                printf("Invalid action! Please choose A, B, C or D\n");
         }
     }
 
