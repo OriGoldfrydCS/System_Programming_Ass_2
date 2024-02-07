@@ -3,12 +3,13 @@
 
 int main() 
 {
-    char productsArray[] = {'a', 'b', 'c', 'd', 'e'};
+    char productsArray[N];
     int values[N];
     int weights[N];
     int selected_bool[N];   // An array for track the selection status of each product
 
     for(int i = 0; i < N; i++) {
+        scanf(" %c", &productsArray[i]);
         scanf("%d", &values[i]);  
         scanf("%d", &weights[i]);  
     }
