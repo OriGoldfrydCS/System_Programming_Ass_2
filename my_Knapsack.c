@@ -16,11 +16,11 @@ int main()
     int maxProfit = knapSack(weights, values, selected_bool);  // Call the knapSack function
 
     printf("Maximum profit: %d\n", maxProfit);
-    printf("Selected items: ");
+    printf("Selected items:");
     for (int i = 0; i < N; i++) 
     {
         if (selected_bool[i] == TRUE) {
-            printf("%c ", productsArray[i]);  // Print the selected products
+            printf(" %c", productsArray[i]);  // Print the selected products
         }
     }
     printf("\n");
