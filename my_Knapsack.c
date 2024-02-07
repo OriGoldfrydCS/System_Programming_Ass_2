@@ -23,7 +23,6 @@ int main()
             printf(" %c", productsArray[i]);  // Print the selected products
         }
     }
-    printf("\n");
 
     return 0;
 }
