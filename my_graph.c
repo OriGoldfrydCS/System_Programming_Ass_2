@@ -10,15 +10,11 @@ int main()
 
     while(1) 
     {
-        scanf(" %c", &action);
-
-        action = toupper(action);   // Convert the input character to uppercase (if needed)
-
-
-        if (action == 'D' || action == EOF)          // 'D' and EOF mean terminate the program
+        if (scanf(" %c", &action) == EOF || action == 'D')  // 'D' and EOF mean terminate the program ' 
         {
             break;
         }
+        action = toupper(action);   // Convert the input character to uppercase (if needed)     
 
         switch(action) 
         {
