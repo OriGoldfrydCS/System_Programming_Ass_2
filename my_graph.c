@@ -15,7 +15,7 @@ int main()
         action = toupper(action);   // Convert the input character to uppercase (if needed)
 
 
-        if (action == EOF || action == 'D')          // 'D' and EOF mean terminate the program
+        if (action == 'D' || action == EOF)          // 'D' and EOF mean terminate the program
         {
             break;
         }
