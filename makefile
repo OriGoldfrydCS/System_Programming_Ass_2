@@ -3,7 +3,7 @@ CC = gcc
 AR = ar
 FLAGS = -Wall -g
 
-# Default target: compile all libraries and programs
+# Default target: compile all programs and library
 all: my_graph my_Knapsack
 
 # Program files compiling rules

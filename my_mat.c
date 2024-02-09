@@ -1,29 +1,30 @@
-#include "my_mat.h"
 #include <stdio.h>
+#include "my_mat.h"
 
 /*****************************/
 /***Functions for section A***/
 /*****************************/
 
 /*This function sets the adjacency matrix of the graph by the user*/
-void setMatrix(int matrix[SIZE][SIZE]) 
+void setTable(int table[SIZE][SIZE]) 
 {
     for (int i = 0; i < SIZE; i++) 
     {
         for (int j = 0; j < SIZE; j++) 
         {
-            scanf("%d", &matrix[i][j]);
-            if(matrix[i][j] == 0 && i != j)     // If input is 0, and i uneques to j: no path between i and j          
+            scanf("%d", &table[i][j]);
+            if(table[i][j] == 0 && i != j)      // If input is 0, and i unequal to j: no path between i and j          
             {                                   // We will define that case with MAX_INT
-                matrix[i][j] = INF;
+                table[i][j] = INF;
             }
         }
     }
-    floydWarshall(matrix);
+
+    floydAlgo(table);
 }
 
-/*This function implements the Floyd-Warshall algorithm (auxiliary function for getMatrix)*/
-void floydWarshall(int matrix[SIZE][SIZE]) 
+/*This function implements the Floyd-Warshall algorithm (auxiliary function for getTable)*/
+void floydAlgo(int table[SIZE][SIZE]) 
 {
     for (int k = 0; k < SIZE; k++)             // Iterate through all possible intermediate vertices
     {           
@@ -32,10 +33,10 @@ void floydWarshall(int matrix[SIZE][SIZE])
 
             for (int j = 0; j < SIZE; j++)     // Iterate through all possible destination vertices
             {
-                if (matrix[i][k] != INF && matrix[k][j] != INF && matrix[i][k] + matrix[k][j] < matrix[i][j])    /*If vertex k is on the shortest path from vertex i to vertex j,*/
-                                                                                                                 /*then update the value of graph[i][j]*/
+                if (table[i][k] != INF && table[k][j] != INF && table[i][k] + table[k][j] < table[i][j])    // If vertex k is on the shortest path from vertex i to vertex j,
+                                                                                                            // then update the value of table[i][j]
                 {
-                    matrix[i][j] = matrix[i][k] + matrix[k][j];
+                    table[i][j] = table[i][k] + table[k][j];
                 }
             }
         }
@@ -43,9 +44,9 @@ void floydWarshall(int matrix[SIZE][SIZE])
 }
 
 /*This function checks if there's a route between vertex i and vertex j*/
-void isPath(int matrix[SIZE][SIZE], int i, int j) 
+void isPath(int table[SIZE][SIZE], int i, int j) 
 {
-    if (matrix[i][j] != INF && i != j)       // Ensure there's a path and it's not a self-loop
+    if (table[i][j] != INF && i != j)       // Ensure a path exists and it is not a self-loop
     { 
         printf("True\n");
     } 
@@ -56,14 +57,15 @@ void isPath(int matrix[SIZE][SIZE], int i, int j)
 }
 
 /*This function prints the shortest path length between vertex i and vertex j*/
-void shortestPath(int matrix[SIZE][SIZE], int i, int j) 
+void shortestPath(int table[SIZE][SIZE], int i, int j) 
 {
-    if (matrix[i][j] != INF && i != j)          // Check for a valid path that's not a self-loop
+    if (table[i][j] != INF && i != j)           // Check for a valid path that's not a self-loop
     {        
-        printf("%d\n", matrix[i][j]);
+        printf("%d\n", table[i][j]);
     } 
-    else {
-        printf("-1\n");                         // No path exists, or it's an invalid query for self-loop
+    else 
+    {
+        printf("-1\n");                         // No path exists or self-loop
     }
 }
 
@@ -74,8 +76,7 @@ void shortestPath(int matrix[SIZE][SIZE], int i, int j)
 /*****************************/
 
 /*This function solves the Integer Knapsack Problem using Dynamic Programmin*/
-
-int knapSack(int weights[], int values[], int selected_bool[]) {
+int knapsack(int weights[], int values[], int selected_bool[]) {
     int p;                      // p represents a product
     int w;                      // w represents a weight
     int DP[N+1][MAX_CAP+1];     // DP table with (n+1) rows and (MAX_CAP+1) columns, to consider the options the no product or weight taken
