@@ -2,6 +2,7 @@
 #define MY_MAT_H
 
 /*defines for Section A*/
+#define MAX_STRING_LENGTH 20   // 20 represents the max string length for the product's name
 #define SIZE 10            // 10 represents the table size
 #define INF 1000000        // A variable that represents that a path between vertices does not exist
 /*defines for Section B*/

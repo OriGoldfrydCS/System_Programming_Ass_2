@@ -19,7 +19,6 @@ void setTable(int table[SIZE][SIZE])
             }
         }
     }
-
     floydAlgo(table);
 }
 
@@ -78,17 +77,17 @@ void shortestPath(int table[SIZE][SIZE], int i, int j)
 /*This function solves the Integer Knapsack Problem using Dynamic Programmin*/
 int knapsack(int weights[], int values[], int selected_bool[]) {
     int p;                      // p represents a product
-    int w;                      // w represents a weight
+    int w;                      // w represents a weight of the product
     int DP[N+1][MAX_CAP+1];     // DP table with (n+1) rows and (MAX_CAP+1) columns, to consider the options the no product or weight taken
 
     // Initialize the DP table
-    for (p = 0; p <= N; p++)                // Iterate through each product (including no products taken)
+    for (p = 0; p <= N; p++)                // Iterate through each product (including the option that no products taken)
     {
         for (w = 0; w <= MAX_CAP; w++)      // Iterate through all possible capacities of a specific product from 0 to MAX_CAP
         {
             if (p == 0 || w == 0)
                 DP[p][w] = 0;                // Base case: if no products or weight is 0, profit is 0
-            else if (weights[p-1] <= w)      // If weight of the nth product is less than or equal to 'w',
+            else if (weights[p-1] <= w)      // If weight of the p'th product is less than or equal to 'w',
                                              // consider the maximum of two cases:
                                              // 1. nth product included
                                              // 2. not included
@@ -107,7 +106,7 @@ int knapsack(int weights[], int values[], int selected_bool[]) {
         selected_bool[p] = FALSE;
     }
 
-    for (p = N; p > 0 && result > 0; p--)       // Check if the value comes from the top (K[i-1][w]) or from (values[i-1] + K[i-1][w-weights[i-1]])
+    for (p = N; p > 0 && result > 0; p--)       // Check if the value comes from (DP[p-1][w]) or (values[p-1] + DP[p-1][w-weights[p-1]])
     {    
                                                 // If it comes from the latter, it means the product is included
         if(result == DP[p-1][w])

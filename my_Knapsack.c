@@ -3,14 +3,14 @@
 
 int main() 
 {
-    char productsArray[N];  // An array for storing the N products
-    int values[N];          // An array for storing the value i of product i in productsArray
-    int weights[N];         // An array for storing the wight i of product i in productsArray
+    char productsArray[N][MAX_STRING_LENGTH];  // An array for storing the name of the N'th products
+    int values[N];          // An array for storing the value i of the i'th product in productsArray
+    int weights[N];         // An array for storing the wight i of the i'th product in productsArray
     int selected_bool[N];   // A boolean array for tracking the selection status of each product
 
     for(int i = 0; i < N; i++)      // Get the inputs from the user
     {
-        scanf(" %c", &productsArray[i]);
+        scanf("%20s", productsArray[i]);
         scanf("%d", &values[i]);  
         scanf("%d", &weights[i]);  
     }
@@ -23,7 +23,7 @@ int main()
     {
         if (selected_bool[i] == TRUE) 
         {
-            printf(" %c", productsArray[i]);  // Print the selected products that maximize the value (and subject to MAX_CAP) marked as True
+            printf(" %s", productsArray[i]);  // Print the selected products that maximize the value (and subject to MAX_CAP) marked as True
         }
     }
 

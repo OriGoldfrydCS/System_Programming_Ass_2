@@ -15,7 +15,7 @@ int main()
             break;
         }
 
-        action = toupper(action);   // Convert the input character to uppercase (if needed)     
+        action = toupper(action);             // Convert the input character to uppercase (if needed)     
 
         switch(action) 
         {
