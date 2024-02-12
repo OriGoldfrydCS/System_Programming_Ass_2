@@ -3,7 +3,7 @@
 
 int main() 
 {
-    char productsArray[N][MAX_STRING_LENGTH];  // An array for storing the name of the N'th products
+    char productsArray[N][MAX_STRING_LENGTH];  // An array for storing the name of the N'th product
     int values[N];          // An array for storing the value i of the i'th product in productsArray
     int weights[N];         // An array for storing the wight i of the i'th product in productsArray
     int selected_bool[N];   // A boolean array for tracking the selection status of each product
@@ -16,7 +16,8 @@ int main()
     }
 
     int maxProfit = knapsack(weights, values, selected_bool);  // Call the knapSack function (see in my_math.c)
-                                                               // That fucntions return a table help us to maximize f(i)*v(i) to all N, where f belong to {0,1}
+                                                               // This fucntion returns a table help us to maximize f(i)*v(i) to all N, where f belong to {0,1}
+    // Print results
     printf("Maximum profit: %d\n", maxProfit);
     printf("Selected items:");
     for (int i = 0; i < N; i++) 

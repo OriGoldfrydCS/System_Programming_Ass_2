@@ -5,7 +5,7 @@
 /***Functions for section A***/
 /*****************************/
 
-/*This function sets the adjacency matrix of the graph by the user*/
+/*This function sets the adjacency matrix of the graph by the user (Section A.1)*/
 void setTable(int table[SIZE][SIZE]) 
 {
     for (int i = 0; i < SIZE; i++) 
@@ -22,7 +22,7 @@ void setTable(int table[SIZE][SIZE])
     floydAlgo(table);
 }
 
-/*This function implements the Floyd-Warshall algorithm (auxiliary function for getTable)*/
+/*This auxiliary function implements the Floyd-Warshall algorithm (auxiliary function for getTable)*/
 void floydAlgo(int table[SIZE][SIZE]) 
 {
     for (int k = 0; k < SIZE; k++)             // Iterate through all possible intermediate vertices
@@ -42,7 +42,7 @@ void floydAlgo(int table[SIZE][SIZE])
     }
 }
 
-/*This function checks if there's a route between vertex i and vertex j*/
+/*This function checks if there's a route between vertex i and vertex j (Section A.2)*/
 void isPath(int table[SIZE][SIZE], int i, int j) 
 {
     if (table[i][j] != INF && i != j)       // Ensure a path exists and it is not a self-loop
@@ -55,7 +55,7 @@ void isPath(int table[SIZE][SIZE], int i, int j)
     }
 }
 
-/*This function prints the shortest path length between vertex i and vertex j*/
+/*This function prints the shortest path length between vertex i and vertex j (Section A.3)*/
 void shortestPath(int table[SIZE][SIZE], int i, int j) 
 {
     if (table[i][j] != INF && i != j)           // Check for a valid path that's not a self-loop
@@ -74,7 +74,8 @@ void shortestPath(int table[SIZE][SIZE], int i, int j)
 /***Functions for section B***/
 /*****************************/
 
-/*This function solves the Integer Knapsack Problem using Dynamic Programmin*/
+/*This function returns the maximum total value that can be achieved within the MAX_CAP using Dynamic Programmin,
+and modifies the selected_bool[] array to indicate which items contribute to this maximum value*/
 int knapsack(int weights[], int values[], int selected_bool[]) {
     int p;                      // p represents a product
     int w;                      // w represents a weight of the product
@@ -122,9 +123,12 @@ int knapsack(int weights[], int values[], int selected_bool[]) {
     return DP[N][MAX_CAP]; 
 }
 
-/*This function finds the maximum of two integers*/ 
+/*This auxiliary function finds the maximum of two integers*/ 
 int max(int x, int y) 
 { 
-    if(x > y)   return x;
-    else        return y; 
+    if(x > y)
+    {
+        return x;
+    }   
+    return y; 
 }
